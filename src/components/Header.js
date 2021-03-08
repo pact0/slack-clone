@@ -5,13 +5,14 @@ import SearchIcon from '@material-ui/icons/Search';
 import Avatar from '@material-ui/core/Avatar';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import HelpIcon from '@material-ui/icons/Help';
-
+import { useStateValue } from "../StateProvider"
 
 const Header = () => {
+    const [{ user }] = useStateValue();
     return (
         <div className="header">
             <div className="header_left">
-                <Avatar alt="Avatar" src="" />
+                <Avatar alt={user?.displayName} src={user?.photoURL} />
                 <WatchLaterIcon />
 
             </div>

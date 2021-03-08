@@ -14,9 +14,11 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 import db from "../firebase"
+import { useStateValue } from '../StateProvider';
 
 const Sidebar = () => {
     const [channels, setChannels] = useState([]);
+    const [{ user }] = useStateValue();
 
     useEffect(() => {
         db.collection("rooms").onSnapshot((snapshot) => (
@@ -37,7 +39,7 @@ const Sidebar = () => {
                     Logged as
                     <div className="sidebar_info">
                         <FiberManualRecordIcon />
-                    Dude
+                        {user?.displayName}
                     </div>
                 </div>
                 <CreateIcon />
@@ -55,7 +57,7 @@ const Sidebar = () => {
                 <hr className="hr" />
                 <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
                 <hr className="hr" />
-                <SidebarOption Icon={AddIcon} title="Add channel" />
+                <SidebarOption Icon={AddIcon} title="Add channel" addChannelOption />
                 <hr className="hr" />
 
 

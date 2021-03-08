@@ -5,8 +5,11 @@
 
 body {
   --slack-color: #3f0f40;
+  overflow: hidden;
 }
 
 .app_body {
   display: flex;
+  flex: 1;
+  height: 100vh;
 }
